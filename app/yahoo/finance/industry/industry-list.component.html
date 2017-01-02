@@ -1,0 +1,62 @@
+
+<h1>Application sur les bourses</h1>
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <h3 class="panel-title">Attention, les données sont récupées via l'API Yahoo et ont donc 15mn de retard sur les résultats officiels.</h3>
+    </div>
+    
+    <div class="panel-body">
+        Vous pourrez trouver ici une liste exhaustive d'actions :
+    </div>
+  
+        
+
+        <div class="well col-md-3">
+
+            <div id="custom-search-input">
+                <div class="input-group">
+
+                    <input type="text" #term (keyup)="search(term.value)" class="form-control input-lg" placeholder="Rechercher une entreprise"/>
+
+                    <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                    </span>
+                </div>
+            </div>
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" *ngFor="let searchIndustry of listSearchIndustry | async"><a href="#">{{searchIndustry.short_name}} - {{searchIndustry.long_name}}</a></li>
+            </ul>
+            
+        </div>
+        <div class="well col-md-7 col-md-offset-2">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom Court</th>
+                        <th>Nom Complet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let industry of listIndustry">
+                        <td>{{ industry.short_name }}</td>
+                        <td>{{ industry.long_name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    
+
+    
+</div>
+
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
