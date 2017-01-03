@@ -1,38 +1,20 @@
-<h1>Application sur les bourses</h1>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Attention, les données sont récupées via l'API Yahoo et ont donc 15mn de retard sur les résultats officiels.</h3>
-  </div>
-  <div class="panel-body">
-    Vous pourrez trouver ici une liste exhaustive d'actions.
-  </div>
-  <table class="table">
+<table class="table">
     <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Symbole</th>
-        <th>Cours</th>
-        <th>Pays</th>
-        <th>Volume</th>
-      </tr>
+        <tr>
+            <th>Nom</th>
+            <th>Symbole</th>
+            <th>Cours</th>
+            <th>Pays</th>
+            <th>Volume</th>
+        </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let quotes of listQuotes">
-        <td>{{ quotes.Name }}</td>
-        <td>{{ quotes.Symbol }}</td>
-        <td>{{ quotes.LastTradePriceOnly }}</td>
-        <td>{{ quotes.Currency }}</td>
-        <td>{{ quotes.Volume }}</td>
-      </tr>
+        <tr *ngFor="let quotes of listQuotes">
+            <td>{{ quotes.Name }}</td>
+            <td>{{ quotes.Symbol }}</td>
+            <td>{{ quotes.LastTradePriceOnly }}</td>
+            <td>{{ quotes.Currency }}</td>
+            <td>{{ quotes.Volume }}</td>
+        </tr>
     </tbody>
-  </table>
-</div>
-
-
-
-<!-- 
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->
+</table>
