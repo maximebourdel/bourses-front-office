@@ -30,5 +30,8 @@ export class QuotesDetailComponent implements OnInit {
             .switchMap((params: Params) => this.quotesService.getQuotes(params['shortName']))
             .subscribe(quotes => this.quotes = quotes);
     }
-        
+    
+    goBack(): void {
+        this.location.back();
+    }        
 }

@@ -3,10 +3,9 @@ import { Component, OnInit }    from '@angular/core';
 import { Router }               from '@angular/router';
  
 import { Industry }             from './industry';
-import { Observable }           from 'rxjs/Observable';
-
 import { IndustryService }      from './industry.service';
 
+import { Observable }           from 'rxjs/Observable';
 
 @Component({
     moduleId: module.id,

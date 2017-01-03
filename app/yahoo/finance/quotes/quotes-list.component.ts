@@ -35,5 +35,5 @@ export class QuotesListComponent implements OnInit {
     
     gotoDetail(quotes: Quotes): void {
         this.router.navigate(['/quotes', quotes.Symbol]);
-    }  
+    }   
 }
