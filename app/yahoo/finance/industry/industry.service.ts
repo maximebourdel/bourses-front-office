@@ -9,8 +9,8 @@ import { Observable }     from 'rxjs/Observable';
 export class IndustryService {
         
     constructor (private http: Http) {}
-
-    getIndustry (): Observable<Industry[]> {
+ 
+    getListIndustry (): Observable<Industry[]> {
         
         let url = 'http://localhost:80/bourses-back/web/app_dev.php/industry/all';
 

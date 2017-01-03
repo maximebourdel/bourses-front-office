@@ -20,20 +20,14 @@ export class QuotesListComponent implements OnInit {
     constructor (
         private quotesService: QuotesService,
     ) {}
-
-    /*ngOnInit():void { 
-        this.route.params
-            .switchMap((params: Params) => this.quotesService.getQuotes())
-            .subscribe(listQuotes => this.listQuotes = listQuotes);
-    }*/
     
-    ngOnInit(): void { this.getQuotes() }
+    ngOnInit(): void { this.getListQuotes() } 
 
-    getQuotes() {
-        this.quotesService.getQuotes()
+    getListQuotes() {
+        this.quotesService.getListQuotes()
                     .subscribe(
                         listQuotes => this.listQuotes = listQuotes,
                         error =>  this.errorMessage = <any>error
                     );
-    }
+    }   
 }

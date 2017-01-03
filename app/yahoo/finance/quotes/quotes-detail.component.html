@@ -1,0 +1,18 @@
+<table class="table">    
+    <thead>
+        <tr>
+            <th>Symbole</th>
+            <th>Cours</th>
+            <th>Pays</th>
+            <th>Volume</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="quotes">
+            <td>{{ quotes.Name }}</td>
+            <td>{{ quotes.Symbol }}</td>
+            <td>{{ quotes.Currency }}</td>
+            <td>{{ quotes.Volume }}</td>
+        </tr>
+    </tbody>
+</table>
