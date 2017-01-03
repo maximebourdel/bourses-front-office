@@ -12,12 +12,7 @@ import './rxjs-operators';
 
             <div class="panel-heading">
                 <h3 class="panel-title">Attention, les données sont récupées via l'API Yahoo et ont donc 15mn de retard sur les résultats officiels.</h3>
-            </div>
-
-            <div class="panel-body">
-                Vous pourrez trouver ici une liste exhaustive d'actions :
-            </div>
-    
+            </div>    
     
             <nav>
                 <a routerLink="/quotes"  routerLinkActive="active" >Quotes</a>

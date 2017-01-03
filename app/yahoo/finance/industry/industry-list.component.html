@@ -30,12 +30,19 @@
             <tr>
                 <th>Nom Court</th>
                 <th>Nom Complet</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let industry of listIndustry">
                 <td>{{ industry.short_name }}</td>
                 <td>{{ industry.long_name }}</td>
+                <td>
+                    <button type="button" class="btn btn-default" 
+                        (click)="gotoDetailQuotes(industry.short_name)">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
