@@ -1,9 +1,8 @@
-// Observable Version
-import { Injectable }     from '@angular/core';
-import { Http, Response, URLSearchParams } from '@angular/http';
+import { Injectable }                       from '@angular/core';
+import { Http, Response, URLSearchParams }  from '@angular/http';
 
-import { Industry }           from './industry';
-import { Observable }     from 'rxjs/Observable';
+import { Industry }                         from './industry';
+import { Observable }                       from 'rxjs/Observable';
 
 @Injectable()
 export class IndustryService {

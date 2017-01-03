@@ -1,11 +1,10 @@
-// Observable Version
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }        from '@angular/core';
 
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { Quotes }              from './quotes';
-import { QuotesService }       from './quotes.service';
+import { Quotes }                   from './quotes';
+import { QuotesService }            from './quotes.service';
 
 @Component({
     moduleId: module.id,

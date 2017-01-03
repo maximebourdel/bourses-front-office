@@ -1,7 +1,6 @@
-// Observable Version
 import { Component, OnInit }    from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Router }               from '@angular/router';
  
 import { Industry }             from './industry';
 import { Observable }           from 'rxjs/Observable';
@@ -37,14 +36,13 @@ export class IndustryListComponent implements OnInit {
 
     getListIndustry() {
         this.industryService.getListIndustry()
-                    .subscribe(
-                        listIndustry => this.listIndustry = listIndustry,
-                        error =>  this.errorMessage = <any>error,
-                    );
+                            .subscribe(
+                                listIndustry => this.listIndustry = listIndustry,
+                                error =>  this.errorMessage = <any>error,
+                            );
     }
   
     gotoDetailQuotes(shortName: String): void {
         this.router.navigate(['/quotes', shortName]);
-    }   
-  
+    }
 }

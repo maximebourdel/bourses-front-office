@@ -1,8 +1,9 @@
-// Observable Version
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }    from '@angular/core';
 
-import { Quotes }              from './quotes';
-import { QuotesService }       from './quotes.service';
+import { Router }               from '@angular/router';
+
+import { Quotes }               from './quotes';
+import { QuotesService }        from './quotes.service';
 
 @Component({
     moduleId: module.id,
@@ -19,15 +20,20 @@ export class QuotesListComponent implements OnInit {
 
     constructor (
         private quotesService: QuotesService,
+        private router: Router,
     ) {}
     
     ngOnInit(): void { this.getListQuotes() } 
 
     getListQuotes() {
         this.quotesService.getListQuotes()
-                    .subscribe(
-                        listQuotes => this.listQuotes = listQuotes,
-                        error =>  this.errorMessage = <any>error
-                    );
+                        .subscribe(
+                            listQuotes => this.listQuotes = listQuotes,
+                            error =>  this.errorMessage = <any>error
+                        );
     }   
+    
+    gotoDetail(quotes: Quotes): void {
+        this.router.navigate(['/quotes', quotes.Symbol]);
+    }  
 }
