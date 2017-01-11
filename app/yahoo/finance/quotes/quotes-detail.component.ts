@@ -17,7 +17,6 @@ export class QuotesDetailComponent implements OnInit {
     
     errorMessage: string;
     quotes: Quotes;
-    mode = 'Observable';
  
     constructor (
         private quotesService: QuotesService,

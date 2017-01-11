@@ -1,24 +1,28 @@
-import { NgModule }                 from '@angular/core';
-import { BrowserModule }            from '@angular/platform-browser';
-import { FormsModule }              from '@angular/forms';
-import { HttpModule, JsonpModule }  from '@angular/http';
+import { NgModule }                     from '@angular/core';
+import { BrowserModule }                from '@angular/platform-browser';
 
-import { AppRoutingModule }         from './app-routing.module';
+import { FormsModule }                  from '@angular/forms';
+import { HttpModule, JsonpModule }      from '@angular/http';
 
-import { AppComponent }             from './app.component';
+import { ChartModule }                  from 'angular2-highcharts';
+
+import { AppRoutingModule }             from './app-routing.module';
+
+import { AppComponent }                 from './app.component';
 
 
-import { QuotesDetailComponent }    from './yahoo/finance/quotes/quotes-detail.component';
-import { QuotesListComponent }      from './yahoo/finance/quotes/quotes-list.component';
-
-import { IndustryListComponent }    from './yahoo/finance/industry/industry-list.component';
-
-import { WikiComponent }            from './wiki/wiki.component';
-import { WikiSmartComponent }       from './wiki/wiki-smart.component';
+import { QuotesDetailComponent }        from './yahoo/finance/quotes/quotes-detail.component';
+import { QuotesListComponent }          from './yahoo/finance/quotes/quotes-list.component';
+import { HistoricaldataListComponent }  from './yahoo/finance/historicaldata/historicaldata-list.component';
+import { IndustryListComponent }        from './yahoo/finance/industry/industry-list.component';
+import { DashboardListComponent }       from './dashboard/dashboard-list.component';
+import { WikiComponent }                from './wiki/wiki.component';
+import { WikiSmartComponent }           from './wiki/wiki-smart.component';
 
 @NgModule({
   imports: [
     BrowserModule,
+    ChartModule,
     FormsModule,
     HttpModule,
     JsonpModule,
@@ -29,6 +33,8 @@ import { WikiSmartComponent }       from './wiki/wiki-smart.component';
     QuotesDetailComponent,
     QuotesListComponent,
     IndustryListComponent,
+    HistoricaldataListComponent,
+    DashboardListComponent,
     WikiComponent,
     WikiSmartComponent
   ],

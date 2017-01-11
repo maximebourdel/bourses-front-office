@@ -4,6 +4,12 @@
  */
 (function (global) {
   System.config({
+    
+    meta: {
+      'typescript': {
+        "exports": "ts"
+      }
+    },
     paths: {
       // paths serve as alias
       'npm:': 'node_modules/'
@@ -28,7 +34,14 @@
 
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      'ts':                         'https://unpkg.com/plugin-typescript@4.0.10/lib/plugin.js',
+      'typescript':                 'https://unpkg.com/typescript@2.0.2/lib/typescript.js',      
+
+
+      'angular2-highcharts':        'https://cdn.rawgit.com/gevgeny/angular2-highcharts/v0.3.0/dist', 
+      'highcharts/highstock.src':   'https://cdn.rawgit.com/highcharts/highcharts-dist/v4.2.1/highstock.js'
+
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -37,6 +50,10 @@
         defaultExtension: 'js'
       },
       rxjs: {
+        defaultExtension: 'js'
+      },
+      'angular2-highcharts': {
+        main: './index.js',
         defaultExtension: 'js'
       }
     }

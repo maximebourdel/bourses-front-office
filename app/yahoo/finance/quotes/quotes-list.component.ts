@@ -16,7 +16,6 @@ export class QuotesListComponent implements OnInit {
     
     errorMessage: string;
     listQuotes: Quotes[];
-    mode = 'Observable';
 
     constructor (
         private quotesService: QuotesService,
@@ -35,5 +34,13 @@ export class QuotesListComponent implements OnInit {
     
     gotoDetail(quotes: Quotes): void {
         this.router.navigate(['/quotes', quotes.Symbol]);
-    }   
+    }
+    
+    gotoDetailHistoricaldata(shortName: String): void {
+        this.router.navigate(['/historicaldata', shortName]);
+    }
+
+    gotoListDashboard(shortName: String): void {
+        this.router.navigate(['/dashboard', shortName]);
+    }
 }

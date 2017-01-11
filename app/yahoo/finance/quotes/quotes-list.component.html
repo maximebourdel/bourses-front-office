@@ -18,8 +18,16 @@
             <td>{{ quotes.Volume }}</td>
             <td>
                 <button type="button" class="btn btn-default" 
+                        (click)="gotoListDashboard(quotes.Symbol)">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default" 
                         (click)="gotoDetail(quotes)">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default" 
+                        (click)="gotoDetailHistoricaldata(quotes.Symbol)">
+                    <i class="fa fa-history" aria-hidden="true"></i>
                 </button>
             </td>
         </tr>

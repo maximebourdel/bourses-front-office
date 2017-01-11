@@ -1,5 +1,5 @@
 import { Injectable }                       from '@angular/core';
-import { Http, Response, URLSearchParams }  from '@angular/http';
+import { Http, Response }                   from '@angular/http';
 
 import { Industry }                         from './industry';
 import { Observable }                       from 'rxjs/Observable';
@@ -31,7 +31,6 @@ export class IndustryService {
         let body = res.json();
         return body || { };
     }
-
 
     private handleError (error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure

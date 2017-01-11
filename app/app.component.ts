@@ -4,24 +4,8 @@ import { Component } from '@angular/core';
 import './rxjs-operators';
 
 @Component({
+    moduleId: module.id,
     selector: 'my-app',
-    template: `
-        
-        <h1>Application sur les bourses</h1>
-        <div class="panel panel-default">
-
-            <div class="panel-heading">
-                <h3 class="panel-title">Attention, les données sont récupées via l'API Yahoo et ont donc 15mn de retard sur les résultats officiels.</h3>
-            </div>    
-    
-            <nav>
-                <a routerLink="/quotes"  routerLinkActive="active" >Quotes</a>
-                <a routerLink="/industry"  routerLinkActive="active" >Industry</a>
-            </nav>
-            
-            <router-outlet></router-outlet>
-            
-        </div>
-    `,
+    templateUrl: 'app.component.html',
 })
 export class AppComponent { }

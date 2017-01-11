@@ -19,7 +19,6 @@ export class IndustryListComponent implements OnInit {
     errorMessage: string;
     listIndustry: Industry[];
     listSearchIndustry: Observable<Industry[]>; 
-    mode = 'Observable';
     shortName: string;
 
     constructor (
@@ -34,6 +33,7 @@ export class IndustryListComponent implements OnInit {
     }
 
     getListIndustry() {
+        
         this.industryService.getListIndustry()
                             .subscribe(
                                 listIndustry => this.listIndustry = listIndustry,
@@ -41,7 +41,15 @@ export class IndustryListComponent implements OnInit {
                             );
     }
   
+    gotoListDashboard(shortName: String): void {
+        this.router.navigate(['/dashboard', shortName]);
+    }
+    
     gotoDetailQuotes(shortName: String): void {
         this.router.navigate(['/quotes', shortName]);
+    }
+    
+    gotoDetailHistoricaldata(shortName: String): void {
+        this.router.navigate(['/historicaldata', shortName]);
     }
 }
