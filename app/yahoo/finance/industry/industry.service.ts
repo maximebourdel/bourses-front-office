@@ -11,7 +11,7 @@ export class IndustryService {
  
     getListIndustry (): Observable<Industry[]> {
         
-        let url = 'http://localhost:80/bourses-back/web/app_dev.php/industry/all';
+        let url = 'http://localhost:80/bourses-api/web/app_dev.php/industry/all';
 
         return this.http.get(url)
                    .map( this.extractData )
@@ -20,7 +20,7 @@ export class IndustryService {
     
     getSearchIndustry (term: string): Observable<Industry[]> {
         
-        let url = 'http://localhost:80/bourses-back/web/app_dev.php/industries/' + term;
+        let url = 'http://localhost:80/bourses-api/web/app_dev.php/industries/' + term;
 
         return this.http.get(url)
                    .map( this.extractData )
