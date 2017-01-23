@@ -1,6 +1,6 @@
 // Observable Version
 import { Injectable }                       from '@angular/core';
-import { Http, Response, URLSearchParams }  from '@angular/http';
+import { Http }                             from '@angular/http';
 
 import { YahooFinanceService }              from '../yahoo-finance.service'
 

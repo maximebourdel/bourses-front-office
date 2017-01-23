@@ -5,19 +5,56 @@ import { ActivatedRoute, Params }   from '@angular/router';
 import { Historicaldata }           from './historicaldata';
 import { HistoricaldataService }    from './historicaldata.service';
 
+
 @Component({
     moduleId: module.id,
     selector: 'historicaldata-list',
     templateUrl: 'historicaldata-list.component.html',
     providers: [ HistoricaldataService ],
-    styles: ['chart { display: block;}']
 })
 export class HistoricaldataListComponent implements OnInit {
     
     errorMessage: string;
     listHistoricaldata: Historicaldata[];
-    list: number[] = [];
     
+    constructor (
+        private historicaldataService: HistoricaldataService,
+        private route: ActivatedRoute,
+    ) { }
+
+    ngOnInit() {
+        this.getListHistoricaldata(); 
+    }
+
+    getListHistoricaldata() {
+        this.route.params
+            .switchMap((params: Params) => this.historicaldataService.getListHistoricaldata(params['shortName']))
+            .subscribe(listHistoricaldata => this.listHistoricaldata = listHistoricaldata);
+    }
+}
+ 
+
+/************************************************************
+ ************ Changement de composant ***********************
+ ************************************************************/
+
+
+@Component({
+    moduleId: module.id,
+    selector: 'historicaldata-chart',
+    template: `
+        <chart [options]="options"></chart>
+    `,
+    providers: [ HistoricaldataService ],
+    styles: ['chart { display: block;}']
+})
+export class HistoricaldataGraphComponent implements OnInit {
+    
+    errorMessage: string;
+    listHigh: number[] = new Array();
+    listLow: number[] = new Array();
+    listDate: String[] = new Array();
+        
     //Graph
     options: Object;
     
@@ -27,24 +64,39 @@ export class HistoricaldataListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        
-//        for (var i = 1; i <= 10; i++){
-//            this.list.push(+this.listHistoricaldata[i].Open);
-//        }
-//        
-//       this.options = {
-//            title : { text : 'simple chart' },
-//            series: [{
-//                data: this.list,
-//            }]
-//        }; 
-        
-        this.getListHistoricaldata(); 
+        this.getChartHistoricaldata();  
     }
 
-    getListHistoricaldata() {
+    getChartHistoricaldata() {
+          
         this.route.params
-            .switchMap((params: Params) => this.historicaldataService.getListHistoricaldata(params['shortName']))
-            .subscribe(listHistoricaldata => this.listHistoricaldata = listHistoricaldata);
+            .switchMap((params: Params)=> this.historicaldataService.getListHistoricaldata(params['shortName']))
+            .subscribe((listHistoricaldata) => {
+                
+                for (let historicaldata of listHistoricaldata){
+                    this.listDate.push(historicaldata.Date)
+                    
+                    this.listHigh.push(+historicaldata.High)
+                    this.listLow.push(+historicaldata.Low)
+                }
+                
+                this.options = {
+                    title : { text : 'Récupération valeurs' },
+                    xAxis: {
+                        categories: this.listDate
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
+                    },
+                    series: [
+                         {name: 'High', data: this.listHigh }
+                        ,{name: 'Low', data: this.listLow }
+                    ]    
+                };
+                
+            });         
     }
 }

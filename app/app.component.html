@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row-fluid">
 
         <h1>Application boursière</h1>
 
@@ -13,11 +13,12 @@
                 <a routerLink="/quotes"  routerLinkActive="active" >Quotes</a>
                 <a routerLink="/industry"  routerLinkActive="active" >Industry</a>
             </nav>
-
-            <!-- Appelle les objets du routeur -->
-            <router-outlet></router-outlet>
             
         </div>
+        <!-- Appelle les objets du routeur -->
+        <router-outlet></router-outlet>
+            
+        
 
     </div>
 </div>
