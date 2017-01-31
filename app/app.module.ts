@@ -15,8 +15,6 @@ import { QuotesListComponent }          from './yahoo/finance/quotes/quotes-list
 import { HistoricaldataListComponent, HistoricaldataGraphComponent }  from './yahoo/finance/historicaldata/historicaldata-list.component';
 import { IndustryListComponent }        from './yahoo/finance/industry/industry-list.component';
 import { DashboardListComponent }       from './dashboard/dashboard-list.component';
-import { WikiComponent }                from './wiki/wiki.component';
-import { WikiSmartComponent }           from './wiki/wiki-smart.component';
 
 @NgModule({
     imports: [
@@ -35,8 +33,6 @@ import { WikiSmartComponent }           from './wiki/wiki-smart.component';
         HistoricaldataListComponent,
         HistoricaldataGraphComponent,
         DashboardListComponent,
-        WikiComponent,
-        WikiSmartComponent
     ],
     bootstrap: [ AppComponent ]
 })
