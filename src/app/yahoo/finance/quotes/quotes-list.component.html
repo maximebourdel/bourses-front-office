@@ -1,0 +1,36 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Symbole</th>
+            <th>Cours</th>
+            <th>Pays</th>
+            <th>Volume</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let quotes of listQuotes">
+            <td>{{ quotes.Name }}</td>
+            <td>{{ quotes.Symbol }}</td>
+            <td>{{ quotes.LastTradePriceOnly }}</td>
+            <td>{{ quotes.Currency }}</td>
+            <td>{{ quotes.Volume }}</td>
+            <td>
+                <button type="button" class="btn btn-default" 
+                        (click)="gotoListDashboard(quotes.Symbol)">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default" 
+                        (click)="gotoDetail(quotes)">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-default" 
+                        (click)="gotoDetailHistoricaldata(quotes.Symbol)">
+                    <i class="fa fa-history" aria-hidden="true"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    

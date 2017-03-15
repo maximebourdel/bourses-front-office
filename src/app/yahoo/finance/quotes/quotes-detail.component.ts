@@ -1,0 +1,34 @@
+import { Component, OnInit }        from '@angular/core';
+
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
+
+import { Quotes }                   from './quotes';
+import { QuotesService }            from './quotes.service';
+
+@Component({
+    selector: 'quotes-detail',
+    providers: [QuotesService],
+    templateUrl: 'quotes-detail.component.html'
+}) 
+export class QuotesDetailComponent implements OnInit {
+    
+    errorMessage: string;
+    quotes: Quotes;
+ 
+    constructor (
+        private quotesService: QuotesService,
+        private route: ActivatedRoute,
+        private location: Location,
+    ) {}
+    
+    ngOnInit(): void{
+        this.route.params
+            .switchMap((params: Params) => this.quotesService.getQuotes(params['shortName']))
+            .subscribe(quotes => this.quotes = quotes);
+    }
+    
+    goBack(): void {
+        this.location.back();
+    }        
+}
