@@ -1,27 +1,112 @@
-# BoursesFront
+Bourses Front Office
+===================
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+----------
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Installation
+-------------
 
-## Code scaffolding
+### Arborescence
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+L'arborescence doit être la suivante :
 
-## Build
+/var/www/html/bourses
+:   - <b>api</b> (repository <b>bourses-api</b>)
+:   - <b>front-office</b> (repository <b>bourses-front-office</b>)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+### Clonage 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Lancer la commande suivante :
+```
+$ git clone https://github.com/maximebourdel/bourses-front-office.git
+```
 
-## Running end-to-end tests
+### Configuration de npm
+Cette commande permet d'installer npm
+```
+$ npm update
+```
+Vérification :
+```
+$ ng --version
+```
+La commande doit ressembler à ceci :
+```
+    _                      _                 ____ _     ___
+   / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+  / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+ / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+/_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+               |___/
+@angular/cli: 1.0.0-rc.1
+node: 6.10.0
+os: linux x64
+@angular/common: 2.4.9
+@angular/compiler: 2.4.9
+@angular/core: 2.4.9
+@angular/forms: 2.4.9
+@angular/http: 2.4.9
+@angular/platform-browser: 2.4.9
+@angular/platform-browser-dynamic: 2.4.9
+@angular/router: 3.4.9
+@angular/cli: 1.0.0-rc.1
+@angular/compiler-cli: 2.4.9
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+```
 
-## Further help
+### Modification de l'API Industry
+Accéder au répertoire suivant <b>src/app/yahoo/finance/industry</b> dans le fichier suivant <b>industry.service.ts</b> et modifier la variable suivante :
+```ts
+baseUrl = 'http://localhost:80/bourses/api/web/app_dev.php/';
+```
+En suivant :
+```ts
+baseUrl = 'http://bourses-online.com/api/app_dev.php/';
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Compiler le résultat
+Afin de compiler le projet, lancer la commande suivante :
+```
+$ ng build --prod
+```
+Qui va créer un répertoire dist qui contiendra tout le code du projet compilé.
+
+### Configurer apache2
+Dans le répertoire <b>/etc/apache2</b> dans le fichier <b>apache2.conf</b> , et ajouter à la fin du fichier :
+```
+<VirtualHost *:80>
+
+    ServerName bourses-online.com
+    ServerAlias www.bourses-online.com
+
+    Alias /api /var/www/html/bourses/api/web
+
+    DocumentRoot /var/www/html/bourses/front-office/dist
+
+    <Directory /var/www/html/bourses/front-office/dist>
+        AllowOverride None
+        Order Allow,Deny
+        Allow from All
+
+        RewriteEngine on
+
+        # Don't rewrite files or directories
+        RewriteCond %{REQUEST_FILENAME} -f [OR]
+        RewriteCond %{REQUEST_FILENAME} -d
+        RewriteRule ^ - [L]
+
+        # Rewrite everything else to index.html
+        # to allow html5 state links
+        RewriteRule ^ index.html [L]
+
+
+    </Directory>
+
+</VirtualHost>
+```
+Redémarrer ensuite apache :
+```
+$ sudo service apache2 restart
+```
+
