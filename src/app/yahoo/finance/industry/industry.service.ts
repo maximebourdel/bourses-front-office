@@ -7,11 +7,13 @@ import { Observable }                       from 'rxjs/Observable';
 @Injectable()
 export class IndustryService {
         
+    baseUrl = 'http://localhost:80/bourses/api/web/app_dev.php/';
+    
     constructor (private http: Http) {}
  
     getListIndustry (): Observable<Industry[]> {
         
-        let url = 'http://localhost:80/bourses-api/web/app_dev.php/industry/all';
+        let url = this.baseUrl + 'industry/all';
 
         return this.http.get(url)
                    .map( this.extractData )
@@ -20,7 +22,7 @@ export class IndustryService {
     
     getSearchIndustry (term: string): Observable<Industry[]> {
         
-        let url = 'http://localhost:80/bourses-api/web/app_dev.php/industries/' + term;
+        let url = this.baseUrl + 'industries/' + term;
 
         return this.http.get(url)
                    .map( this.extractData )
