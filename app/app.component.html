@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row-fluid">
+
+        <h1>Application boursière</h1>
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Attention, les données sont récupérées via l'API Yahoo et ont donc 15mn de retard sur les résultats officiels.</h3>
+            </div>    
+
+            <nav>
+                <a routerLink="/quotes"  routerLinkActive="active" >Quotes</a>
+                <a routerLink="/industry"  routerLinkActive="active" >Industry</a>
+            </nav>
+            
+        </div>
+        <!-- Appelle les objets du routeur -->
+        <router-outlet></router-outlet>
+            
+        
+
+    </div>
+</div>

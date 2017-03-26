@@ -22,16 +22,29 @@ Lancer la commande suivante :
 $ git clone https://github.com/maximebourdel/bourses-front-office.git
 ```
 
-### Configuration de npm
-Cette commande permet d'installer npm
+### Installation de npm, node et ng
+Cette commande permet d'installer npm puis ng
 ```
-$ npm update
+$ apt-get install npm
+$ apt-get install ng-common
+$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+$ apt-get install -y nodejs
+$ npm install -g @angular/cli
+
 ```
+
+### Installation des composants
+```
+$ npm isntall
+```
+
 Vérification :
 ```
-$ ng --version
+$ npm -v
+$ node -v
+$ ng -v
 ```
-La commande doit ressembler à ceci :
+La commande pour ng -v doit ressembler à ceci :
 ```
     _                      _                 ____ _     ___
    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
@@ -73,6 +86,7 @@ $ ng build --prod
 Qui va créer un répertoire dist qui contiendra tout le code du projet compilé.
 
 ### Configurer apache2
+
 Dans le répertoire <b>/etc/apache2</b> dans le fichier <b>apache2.conf</b> , et ajouter à la fin du fichier :
 ```
 <VirtualHost *:80>
@@ -105,8 +119,9 @@ Dans le répertoire <b>/etc/apache2</b> dans le fichier <b>apache2.conf</b> , et
 
 </VirtualHost>
 ```
-Redémarrer ensuite apache :
+Redémarrer ensuite apache et son composant a2enmod :
 ```
+$ sudo a2enmod rewrite
 $ sudo service apache2 restart
 ```
 
