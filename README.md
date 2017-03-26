@@ -25,7 +25,7 @@ $ git clone https://github.com/maximebourdel/bourses-front-office.git
 ### Configuration de npm
 Cette commande permet d'installer npm
 ```
-$ npm update
+$ apt-get install npm
 ```
 Vérification :
 ```
