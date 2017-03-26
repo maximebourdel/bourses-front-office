@@ -22,11 +22,15 @@ Lancer la commande suivante :
 $ git clone https://github.com/maximebourdel/bourses-front-office.git
 ```
 
-### Configuration de npm
-Cette commande permet d'installer npm
+### Configuration de npm et ng
+Cette commande permet d'installer npm puis ng
 ```
 $ apt-get install npm
+$ apt-get install  ng-common
 ```
+
+apt install ng-common
+
 Vérification :
 ```
 $ ng --version
