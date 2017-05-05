@@ -128,6 +128,16 @@ $ sudo service apache2 restart
 
 ### Installation de Google API Analytics
 
+### Modification de l'API Industry
+Accéder au répertoire suivant <b>src/app/yahoo/finance/industry</b> dans le fichier suivant <b>industry.service.ts</b> et modifier la variable suivante :
+```ts
+let url: string = 'http://localhost:8081/bourses/google-analytics';
+```
+En suivant :
+```ts
+let url: string = 'http://5.39.77.232:8081/bourses/google-analytics';
+```
+
 Après avoir importé le projet google-api lancer la commande suivante :
 ```
 $ nohup node /var/www/html/bourses/google-api/server.js &
