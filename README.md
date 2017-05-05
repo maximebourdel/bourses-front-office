@@ -69,7 +69,7 @@ os: linux x64
 ```
 
 ### Modification de l'API Industry
-Accéder au répertoire suivant <b>src/app/yahoo/finance/industry</b> dans le fichier suivant <b>industry.service.ts</b> et modifier la variable suivante :
+Accéder au répertoire suivant <b>/bourses/front-office/src/app/yahoo/finance/industry</b> dans le fichier suivant <b>industry.service.ts</b> et modifier la variable suivante :
 ```ts
 baseUrl = 'http://localhost:80/bourses/api/web/app_dev.php/';
 ```
@@ -129,7 +129,7 @@ $ sudo service apache2 restart
 ### Installation de Google API Analytics
 
 ### Modification de l'API Industry
-Accéder au répertoire suivant <b>src/app/yahoo/finance/industry</b> dans le fichier suivant <b>industry.service.ts</b> et modifier la variable suivante :
+Accéder au répertoire suivant <b>/bourses/front-office/src/app/google/analytics</b> dans le fichier suivant <b>api.service.ts</b> et modifier la variable suivante :
 ```ts
 let url: string = 'http://localhost:8081/bourses/google-analytics';
 ```
