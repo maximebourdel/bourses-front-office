@@ -8,6 +8,7 @@ import { IndustryService }      from './industry.service';
 import { Observable }           from 'rxjs/Observable';
 
 @Component({
+    moduleId: module.id,
     selector: 'industry-list',
     templateUrl: 'industry-list.component.html',
     providers: [ IndustryService ],
@@ -34,10 +35,10 @@ export class IndustryListComponent implements OnInit {
     getListIndustry() {
         
         this.industryService.getListIndustry()
-                            .subscribe(
-                                listIndustry => this.listIndustry = listIndustry,
-                                error =>  this.errorMessage = <any>error,
-                            );
+            .subscribe(
+                listIndustry => this.listIndustry = listIndustry,
+                error =>  this.errorMessage = <any>error,
+            );
     }
   
     gotoListDashboard(shortName: String): void {

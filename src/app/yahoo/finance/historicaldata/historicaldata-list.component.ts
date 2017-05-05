@@ -7,6 +7,7 @@ import { HistoricaldataService }    from './historicaldata.service';
 
 
 @Component({
+    moduleId: module.id,
     selector: 'historicaldata-list',
     templateUrl: 'historicaldata-list.component.html',
     providers: [ HistoricaldataService ],
@@ -39,6 +40,7 @@ export class HistoricaldataListComponent implements OnInit {
 
 
 @Component({
+    moduleId: module.id,
     selector: 'historicaldata-chart',
     template: `
         <chart [options]="options"></chart>

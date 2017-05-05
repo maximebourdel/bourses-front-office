@@ -1,28 +1,23 @@
 import { Injectable }                       from '@angular/core';
-import { Http, Response }                   from '@angular/http';
+import { Http, Response, URLSearchParams }  from '@angular/http';
 
-import { Industry }                         from './industry';
+import { Api }                         from './api';
 import { Observable }                       from 'rxjs/Observable';
 
 @Injectable()
-export class IndustryService {
+export class ApiService {
         
     constructor (private http: Http) {}
- 
-    getListIndustry (): Observable<Industry[]> {
-        
-        let url = 'http://localhost:80/bourses-api/web/app_dev.php/industry/all';
 
-        return this.http.get(url)
-                   .map( this.extractData )
-                   .catch(this.handleError);         
-    }
+    getApiService (dimensions: string , metrics: string): Observable<Api> {
+        
+        let url: string = 'http://localhost:8081/bourses/google-analytics';
+        let params: URLSearchParams = new URLSearchParams();
     
-    getSearchIndustry (term: string): Observable<Industry[]> {
-        
-        let url = 'http://localhost:80/bourses-api/web/app_dev.php/industries/' + term;
+        params.set('dimensions', dimensions);
+        params.set('metrics', metrics);
 
-        return this.http.get(url)
+        return this.http.get( url , { search: params })
                    .map( this.extractData )
                    .catch(this.handleError);         
     }
@@ -46,4 +41,6 @@ export class IndustryService {
         console.error("errMsg");
         return Observable.throw(errMsg);
     }
+    
+    
 }

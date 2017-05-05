@@ -1,26 +1,17 @@
 import { Injectable }                       from '@angular/core';
 import { Http, Response }                   from '@angular/http';
 
-import { Industry }                         from './industry';
+import { Report }                         from './report';
 import { Observable }                       from 'rxjs/Observable';
 
 @Injectable()
-export class IndustryService {
+export class ReportService {
         
     constructor (private http: Http) {}
- 
-    getListIndustry (): Observable<Industry[]> {
-        
-        let url = 'http://localhost:80/bourses-api/web/app_dev.php/industry/all';
 
-        return this.http.get(url)
-                   .map( this.extractData )
-                   .catch(this.handleError);         
-    }
-    
-    getSearchIndustry (term: string): Observable<Industry[]> {
+    getReportService (fileName): Observable<Report> {
         
-        let url = 'http://localhost:80/bourses-api/web/app_dev.php/industries/' + term;
+        let url = 'data/'+ fileName + '.json';
 
         return this.http.get(url)
                    .map( this.extractData )

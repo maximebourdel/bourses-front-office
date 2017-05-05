@@ -7,6 +7,7 @@ import { Quotes }                   from './quotes';
 import { QuotesService }            from './quotes.service';
 
 @Component({
+    moduleId: module.id,
     selector: 'quotes-detail',
     providers: [QuotesService],
     templateUrl: 'quotes-detail.component.html'

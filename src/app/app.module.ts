@@ -16,6 +16,9 @@ import { HistoricaldataListComponent, HistoricaldataGraphComponent }  from './ya
 import { IndustryListComponent }        from './yahoo/finance/industry/industry-list.component';
 import { DashboardListComponent }       from './dashboard/dashboard-list.component';
 
+import { KPIComponent }                 from './google/analytics/kpi.component';
+
+    
 @NgModule({
     imports: [
         BrowserModule,
@@ -33,6 +36,7 @@ import { DashboardListComponent }       from './dashboard/dashboard-list.compone
         HistoricaldataListComponent,
         HistoricaldataGraphComponent,
         DashboardListComponent,
+        KPIComponent,
     ],
     bootstrap: [ AppComponent ]
 })

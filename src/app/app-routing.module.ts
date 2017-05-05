@@ -5,6 +5,7 @@ import { QuotesListComponent }          from './yahoo/finance/quotes/quotes-list
 import { QuotesDetailComponent }        from './yahoo/finance/quotes/quotes-detail.component';
 import { HistoricaldataListComponent }  from './yahoo/finance/historicaldata/historicaldata-list.component';
 import { DashboardListComponent }       from './dashboard/dashboard-list.component';
+import { KPIComponent }                 from './google/analytics/kpi.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
     
     { path: 'dashboard/:shortName', component: DashboardListComponent },
     { path: 'quotes/:shortName', component: QuotesDetailComponent },
-    { path: 'historicaldata/:shortName', component: HistoricaldataListComponent }
+    { path: 'historicaldata/:shortName', component: HistoricaldataListComponent },
+    
+    { path: 'kpi', component: KPIComponent }
 ];
 @NgModule({
     imports: [ RouterModule.forRoot(routes) ],
