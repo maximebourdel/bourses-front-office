@@ -18,7 +18,7 @@ export class QuotesService extends YahooFinanceService {
         super.setDefaultParams();
         
         super.addParam( 'q'
-            , 'select * from yahoo.finance.quotes where symbol in ("PARRO.PA","AAPL","GOOG","MSFT")'
+            , 'select * from yahoo.finance.quotes where symbol in ("PARRO.PA","AAPL","GOOG","MSFT","BND.PA")'
         );
         
         return this.http.get( super.getBoursesUrl(), { search: super.getParams() } )

@@ -1,14 +1,10 @@
 import { Component, OnInit }    from '@angular/core';
-import { Http } from '@angular/http';
+import { Http }                 from '@angular/http';
 
 import { Router }               from '@angular/router';
 
-import { Report }             from './report';
-import { Api }             from './api';
-
-
-import { ReportService }      from './report.service';
-import { ApiService }      from './api.service';
+import { Api }                  from './api';
+import { ApiService }           from './api.service';
 
 import { Observable }           from 'rxjs/Observable';
  
@@ -17,15 +13,14 @@ import { Observable }           from 'rxjs/Observable';
     selector: 'kpi',
     templateUrl: 'kpi.html',
     styles: ['chart { display: block;}'],
-    providers: [ ReportService,ApiService ],
+    providers: [ ApiService ],
 })
 export class KPIComponent implements OnInit { 
- 
+
     errorMessage: string;
     listLegend: any = new Array();
     listData: any = new Array();
     listFinal: Object = new Object();
-    listFinal2: any = new Array();
 
     //Graph
     optionsPie: Object;
@@ -35,20 +30,17 @@ export class KPIComponent implements OnInit {
 
 
     constructor (
-        private reportService: ReportService,
         private apiService: ApiService,
         private router: Router,
     ) {}
  
     ngOnInit() {
-        
         this.getCharts();     
-    } 
-    
+    }
     
     getCharts() {
        
-        this.apiService.getApiService('ga:deviceCategory', 'ga:sessions')
+        this.apiService.getApiService('90daysAgo', 'yesterday', 'ga:deviceCategory', 'ga:sessions')
             .subscribe((apiListData) => {
                        
                 this.listData = new Array();       
@@ -61,7 +53,7 @@ export class KPIComponent implements OnInit {
                 
                 this.optionsPie = { 
                     title: {
-                        text: "Types d'utilisateurs",
+                        text: "Types d'appareils",
                         align: 'center',
                     },
                     
@@ -74,7 +66,7 @@ export class KPIComponent implements OnInit {
                 }; 
             });  
             
-        this.apiService.getApiService('ga:userType', 'ga:newUsers')
+        this.apiService.getApiService('14daysAgo', 'yesterday', 'ga:userType', 'ga:newUsers')
             .subscribe((apiListData) => {
                  
                 this.listData = new Array();
@@ -100,7 +92,7 @@ export class KPIComponent implements OnInit {
                     }]    
                 }; 
             });     
-        this.apiService.getApiService('ga:country', 'ga:sessions')
+        this.apiService.getApiService('90daysAgo', 'yesterday', 'ga:country', 'ga:sessions')
             .subscribe((apiListData) => {
                  
                 this.listData = new Array();                
@@ -113,7 +105,7 @@ export class KPIComponent implements OnInit {
                 
                 this.optionsPie3 = { 
                     title: {
-                        text: "Pays par sessions",
+                        text: "Nombre de sessions par pays",
                         align: 'center',
                     },
                     
@@ -126,7 +118,7 @@ export class KPIComponent implements OnInit {
                 }; 
             }); 
             
-        this.apiService.getApiService('ga:date', 'ga:users')
+        this.apiService.getApiService('14daysAgo', 'yesterday', 'ga:date', 'ga:users')
             .subscribe((apiListData) => {
                  
                 this.listData = new Array();   
@@ -135,14 +127,10 @@ export class KPIComponent implements OnInit {
                     list.push(+data[1]);
                     this.listData.push(list);                    
                 }
-//                this.listFinal["name"] = apiListData.rows[0][0];
-//                this.listFinal["data"] = this.listData;
-//                
-//                this.listFinal2.push(this.listFinal);
                 
                 this.optionsLine = { 
                     title: {
-                        text: "Pays par sessions",
+                        text: "Nombre d'utilisateurs par jours",
                         align: 'center',
                     },
                     

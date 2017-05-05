@@ -13,7 +13,7 @@ L'arborescence doit être la suivante :
 /var/www/html/bourses
 :   - <b>api</b> (repository <b>bourses-api</b>)
 :   - <b>front-office</b> (repository <b>bourses-front-office</b>)
-
+:   - <b>google-api</b> (pas encore de repository)
 
 ### Clonage 
 
@@ -125,3 +125,10 @@ $ sudo a2enmod rewrite
 $ sudo service apache2 restart
 ```
 
+
+### Installation de Google API Analytics
+
+Après avoir importé le projet google-api lancer la commande suivante :
+```
+$ nohup node /var/www/html/bourses/google-api/server.js &
+```

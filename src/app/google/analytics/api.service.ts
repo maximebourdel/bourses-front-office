@@ -1,7 +1,7 @@
 import { Injectable }                       from '@angular/core';
 import { Http, Response, URLSearchParams }  from '@angular/http';
 
-import { Api }                         from './api';
+import { Api }                              from './api';
 import { Observable }                       from 'rxjs/Observable';
 
 @Injectable()
@@ -9,14 +9,16 @@ export class ApiService {
         
     constructor (private http: Http) {}
 
-    getApiService (dimensions: string , metrics: string): Observable<Api> {
+    getApiService (startDate: string, endDate: string, dimensions: string , metrics: string): Observable<Api> {
         
         let url: string = 'http://localhost:8081/bourses/google-analytics';
         let params: URLSearchParams = new URLSearchParams();
     
-        params.set('dimensions', dimensions);
-        params.set('metrics', metrics);
-
+        params.set('startDate',     startDate);
+        params.set('endDate',       endDate);
+        params.set('dimensions',    dimensions);
+        params.set('metrics',       metrics);
+			
         return this.http.get( url , { search: params })
                    .map( this.extractData )
                    .catch(this.handleError);         
